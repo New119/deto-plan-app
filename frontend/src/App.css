@@ -1,0 +1,223 @@
+/* --- 変数定義 --- */
+:root {
+  --primary-color: #ff477e;
+  --secondary-color: #ff85a1;
+  --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe3e9 100%);
+  --card-shadow: 0 10px 30px rgba(255, 71, 126, 0.15);
+  --text-color: #333;
+  /* フォントを一括管理 */
+  --main-font: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+/* --- 全体のリセットとフォント設定 --- */
+/* bodyだけでなく、ボタンや入力欄にもフォントを強制適用 */
+body, button, input, select, textarea {
+  font-family: var(--main-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- レイアウト --- */
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0px #fff;
+}
+
+p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* --- カードデザイン --- */
+.card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* --- 入力フォーム --- */
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 4px rgba(255, 133, 161, 0.2);
+}
+
+/* --- ボタン --- */
+button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- 結果表示エリア --- */
+.result-area {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #fff;
+  border: 2px dashed var(--secondary-color);
+  border-radius: 16px;
+  text-align: left;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-area h2 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* フォント調整を追加した部分 */
+.plan-text p {
+  margin-bottom: 1rem;
+  line-height: 1.8;       
+  letter-spacing: 0.04em; 
+  color: #444;
+  font-size: 1.05rem;     
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* --- Markdown用のスタイル（追加） --- */
+
+/* 見出し（### の部分） */
+.plan-text h1, .plan-text h2, .plan-text h3 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ffe3e9;
+  padding-bottom: 0.2rem;
+}
+
+/* 太字（** の部分） */
+.plan-text strong {
+  color: #ff477e; /* 濃いピンク */
+  background: #fff0f3; /* 薄い背景色 */
+  padding: 0 4px;
+}
+
+/* 箇条書き（- の部分） */
+.plan-text ul, .plan-text ol {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.plan-text li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+/* --- ローディングスピナー（追加） --- */
+
+/* くるくる回る円のデザイン */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  /* 半透明の白い枠 */
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  /* 上の部分だけ濃い白にする（ここが回って見える） */
+  border-top-color: #fff;
+  /* アニメーションの適用 */
+  animation: spin 0.8s linear infinite;
+  margin-right: 10px; /* 文字との間隔 */
+  vertical-align: middle;
+}
+
+/* 回る動きの定義 */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ローディング中のボタンの見た目を調整 */
+button:disabled {
+  /* 既存のグレー背景に加え、カーソルを待機状態に */
+  cursor: wait;
+  opacity: 0.9; /* 少しだけ透けさせる */
+}
+
+/* ラベル内のアイコンと文字をきれいに並べる設定 */
+.input-group label {
+  display: flex;       /* 横並びにする */
+  align-items: center; /* 上下の中心を揃える */
+  gap: 8px;           /* アイコンと文字の間隔を8px空ける */
+  
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
