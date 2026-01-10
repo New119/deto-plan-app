@@ -51,7 +51,7 @@ function App() {
     setLoading(true)
 
     try {
-      const response = await fetch('https://deto-plan-app.onrender.com', {
+      const response = await fetch('https://deto-plan-app.onrender.com/api/generate_plan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
