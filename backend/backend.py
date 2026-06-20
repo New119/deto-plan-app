@@ -12,7 +12,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173","https://deto-plan-app.vercel.app",],
+    allow_origins=["http://localhost:5173","https://ai-date-maker.vercel.app","https://deto-plan-app.vercel.app",],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
